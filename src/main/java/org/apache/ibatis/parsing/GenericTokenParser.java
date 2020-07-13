@@ -20,8 +20,11 @@ package org.apache.ibatis.parsing;
  */
 public class GenericTokenParser {
 
+  // 开始token
   private final String openToken;
+  // 结束token
   private final String closeToken;
+
   private final TokenHandler handler;
 
   public GenericTokenParser(String openToken, String closeToken, TokenHandler handler) {
@@ -35,10 +38,13 @@ public class GenericTokenParser {
       return "";
     }
     // search open token
+    // 获取开始token的位置
     int start = text.indexOf(openToken);
+    // 没有找到开始token返回入参字符串
     if (start == -1) {
       return text;
     }
+    // 遍历text入参字符串
     char[] src = text.toCharArray();
     int offset = 0;
     final StringBuilder builder = new StringBuilder();
